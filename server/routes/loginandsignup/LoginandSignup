@@ -1,0 +1,10 @@
+const express = require('express');
+const loginAndSignupRouter = express.Router();
+const { Login,Register } = require('../../controller/loginandsignup/LoginSignup');
+
+
+
+loginAndSignupRouter.post('/register', Register)
+loginAndSignupRouter.post('/login', Login)
+
+module.exports=loginAndSignupRouter;

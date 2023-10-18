@@ -1,0 +1,30 @@
+SELECT table1.*, table2.column1, table2.column2, table2.column3
+FROM table1
+JOIN table2 ON table1.joining_column = table2.joining_column;
+
+Select products.* , product_description.description , product_description.weight , product_description.colour from products JOIN product_description ON products.product_id = product_description.product_id WHERE products.Product_id = 'P2';
+SELECT table1.*, table2.column1, table2.column2, table2.column3 FROM table1 JOIN table2 ON table1.joining_column = table2.joining_column WHERE table1.Product_id = 'your_product_id_here';
+
+
+API customer products wali
+============================>
+
+app.get('/products', async (req, res)=>{
+   
+
+    let sqlQuery =`Select products.* , product_description.description , product_description.weight , product_description.colour from products JOIN product_description ON products.product_id = product_description.product_id;`;
+    //  console.log("query run",yesssssssssss)
+
+
+     await connection.query(sqlQuery,function(error,result) {
+        if(error){
+            console.log("error", error.sqlMessage);
+        }
+          else{
+            res.json(result);
+     console.log("query run",result)
+        }
+    }
+     )
+
+})
